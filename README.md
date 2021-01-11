@@ -4,7 +4,14 @@ Esta aplicación es un API que representa una ruleta de apuestas.
 
 **Proyecto hecho en Java 8 y Spring Boot**
 
-Requisitos para ejecutar la aplicacion
+## Tabla de contenido
+
+- [Requisitos para ejecutar la aplicación](#requisitos-para-ejecutar-la-aplicación).
+- [IMPORTANTE](#importante).
+- [Ejecutar aplicación](#ejecutar-aplicación).
+- [API](#api).
+
+### Requisitos para ejecutar la aplicación
 
 - [Java 1.8 JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html "Java 1.8 JDK")
 - [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/ "IntelliJ IDEA") o Spring Tools Suite 4
