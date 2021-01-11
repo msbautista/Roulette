@@ -2,6 +2,29 @@
 
 Esta aplicación es un API que representa una ruleta de apuestas.
 
+**Proyecto hecho en Java 8 y Spring Boot**
+
+Requisitos para ejecutar la aplicacion
+
+- [Java 1.8 JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html "Java 1.8 JDK")
+- [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/ "IntelliJ IDEA") o Spring Tools Suite 4
+- [Postman](https://www.postman.com/ "Postman") Para ejecutar pruebas al API
+
+## Ejecutar aplicación
+
+1. Clonar proyecto
+
+2. Para ejecutar la aplicacion puede importar en intellij IDEA u otro.
+Tambien puede ubicarse en la raiz del proyecto y ejecutar el siguiente comando:
+
+` java -jar target/Roulette-0.0.1-SNAPSHOT.jar`
+
+La aplicación se ejecutara en el **PUERTO 8080**
+
+![](https://i.ibb.co/ZBRZH65/Captura2.png)
+
+## API
+
 ### Crear una ruleta [GET] `/roulette/new`
 
 Endpoint que crea una ruleta para empezar a jugar.
