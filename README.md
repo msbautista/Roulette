@@ -1,6 +1,11 @@
-Para crear una nueva ruleta.
+# Prueba Clean Code - Juego de Ruleta
+
+Esta aplicación es un API que representa una ruleta de apuestas.
 
 ### Crear una ruleta [GET] `/roulette/new`
+
+Endpoint que crea una ruleta para empezar a jugar.
+
 Resultado:
 ```json
 {
@@ -108,4 +113,28 @@ Resultado:
 	-  **money:** Cantidad de dinero ganada
 	-  **result:** WINNER si la apuesta fue ganadora y LOSER si la apuesta fue perdida
 	-  **betType:** El tipo de apuesta que se realizó
+- **error:** Mensaje de error si este ocurre
+
+### Obtener todas las ruletas [GET] `/roulette/all`
+
+Endpoint de listado de ruletas creadas con sus estados (abierta o cerrada)
+Resultado:
+```json
+{
+    "status": "OK",
+    "data": [
+        {
+            "id": 1,
+            "state": "CLOSED",
+            "randomNumber": 1
+        }
+    ],
+    "error": null
+}
+```
+- **status:** Resultado de la operación
+- **data:** Lista de todas las ruletas
+	-  **id**: Id de la ruleta
+	-  **state:** Estado de la ruleta | CREATED: la ruleta fue creada - OPEN: la ruleta está abierta - CLOSED: la ruleta esta cerrada 
+	-  **randomNumber:** si la ruleta esta cerrada, este campo tiene el número aleatorio que lanzo la ruleta
 - **error:** Mensaje de error si este ocurre
