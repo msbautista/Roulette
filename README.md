@@ -10,6 +10,14 @@ Requisitos para ejecutar la aplicacion
 - [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/ "IntelliJ IDEA") o Spring Tools Suite 4
 - [Postman](https://www.postman.com/ "Postman") Para ejecutar pruebas al API
 
+### IMPORTANTE
+
+Tener una base de datos mysql en la cual pueda crear las tablas para el proyecto.
+El script sql se encuentra en la siguiente ruta: `src/main/resources/database.sql`
+Después de crear la base de datos, se crea primero la tabla de roulette y luego la tabla de bet.
+
+No olvide actualizar los properties de la aplicación con los cambios para conectar correctamente a la base de datos (`src/main/resources/application.properties`)
+
 ## Ejecutar aplicación
 
 1. Clonar proyecto
