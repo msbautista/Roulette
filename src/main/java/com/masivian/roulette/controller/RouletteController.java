@@ -1,5 +1,6 @@
 package com.masivian.roulette.controller;
 
+import com.masivian.roulette.response.ApiResponse;
 import com.masivian.roulette.response.BetResponse;
 import com.masivian.roulette.exception.RouletteException;
 import com.masivian.roulette.service.RouletteService;
@@ -17,12 +18,12 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping(value = "/roulette", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/roulette")
 public class RouletteController {
 
     private final int SUCCESSFUL_UPDATE = 1;
-    private final String SUCCESS_MESSAGE = "OK";
-    private final String SERVER_ERROR_MESSAGE = "ERROR";
+    private final String SUCCESS_MESSAGE = "successful operation";
+    private final String SERVER_ERROR_MESSAGE = "error during operation";
 
     private RouletteService rouletteService;
 
@@ -32,8 +33,10 @@ public class RouletteController {
     }
 
     @GetMapping("/new")
-    public Integer newRoulette() {
-        return rouletteService.newRoulette();
+    public ResponseEntity<ApiResponse> newRoulette() {
+        Integer rouletteId = rouletteService.newRoulette();
+
+        return new ApiResponse(rouletteId).send(HttpStatus.OK);
     }
 
     @GetMapping("/open/{id}")
@@ -41,12 +44,15 @@ public class RouletteController {
         try {
             Integer roulette = rouletteService.openRoulette(id);
             if (roulette.equals(SUCCESSFUL_UPDATE)) {
-                return new ResponseEntity<>(SUCCESS_MESSAGE, HttpStatus.OK);
+
+                return new ApiResponse(SUCCESS_MESSAGE).send(HttpStatus.OK, null);
             } else {
-                return new ResponseEntity<>(SERVER_ERROR_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
+
+                return new ApiResponse().send(HttpStatus.INTERNAL_SERVER_ERROR, SERVER_ERROR_MESSAGE);
             }
-        } catch (RouletteException.RouletteDoesNotExist rouletteDoesNotExist) {
-            return new ResponseEntity<>(rouletteDoesNotExist.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (RouletteException.RouletteDoesNotExist ex) {
+
+            return new ApiResponse().send(HttpStatus.BAD_REQUEST, ex.getMessage());
         }
     }
 
@@ -54,9 +60,11 @@ public class RouletteController {
     public ResponseEntity<Object> closeRoulette(@PathVariable Integer id) {
         try {
             List<BetResponse> betResponses = rouletteService.closeRoulette(id);
-            return new ResponseEntity<>(betResponses, HttpStatus.OK);
-        } catch (RouletteException.RouletteDoesNotExist | RouletteException.RouletteIsClosed rouletteDoesNotExist) {
-            return new ResponseEntity<>(rouletteDoesNotExist.getMessage(), HttpStatus.BAD_REQUEST);
+
+            return new ApiResponse(betResponses).send(HttpStatus.OK, null);
+        } catch (RouletteException.RouletteDoesNotExist | RouletteException.RouletteIsClosed ex) {
+
+            return new ApiResponse().send(HttpStatus.BAD_REQUEST, ex.getMessage());
         }
     }
 

@@ -4,6 +4,7 @@ import com.masivian.roulette.exception.BetException;
 import com.masivian.roulette.exception.RouletteException;
 import com.masivian.roulette.request.BetColorRequest;
 import com.masivian.roulette.request.BetNumericRequest;
+import com.masivian.roulette.response.ApiResponse;
 import com.masivian.roulette.service.BetService;
 import com.masivian.roulette.validate.BetValidate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,13 @@ public class BetController {
             betValidate.validateBetNumericRequest(request);
             Integer idBet = betService.createBetAndGetId(request);
 
-            return new ResponseEntity<>(idBet, HttpStatus.OK);
+            return new ApiResponse(idBet).send(HttpStatus.OK, null);
         } catch (BetException.NumberOutOfRange |
                 BetException.InvalidMoney |
                 RouletteException.RouletteIsNotOpen |
                 RouletteException.RouletteDoesNotExist rouletteException) {
-            return new ResponseEntity<>(rouletteException.getMessage(), HttpStatus.BAD_REQUEST);
+
+            return new ApiResponse().send(HttpStatus.BAD_REQUEST, rouletteException.getMessage());
         }
     }
 
@@ -52,12 +54,13 @@ public class BetController {
             betValidate.validateBetColorRequest(request);
             Integer idBet = betService.createBetAndGetId(request);
 
-            return new ResponseEntity<>(idBet, HttpStatus.OK);
+            return new ApiResponse(idBet).send(HttpStatus.OK, null);
         } catch (BetException.InvalidColor |
                 BetException.InvalidMoney |
                 RouletteException.RouletteIsNotOpen |
                 RouletteException.RouletteDoesNotExist rouletteException) {
-            return new ResponseEntity<>(rouletteException.getMessage(), HttpStatus.BAD_REQUEST);
+
+            return new ApiResponse().send(HttpStatus.BAD_REQUEST, rouletteException.getMessage());
         }
     }
 
