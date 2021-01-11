@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @Component
 public class RouletteRepositoryImp implements RouletteRepository {
@@ -25,7 +26,7 @@ public class RouletteRepositoryImp implements RouletteRepository {
     private static RowMapper<Roulette> rouletteRowMapper = (resultSet, i) -> new Roulette(
             resultSet.getInt("id"),
             resultSet.getString("state"),
-            resultSet.getInt("random_number")
+            (Integer) resultSet.getObject("random_number")
     );
 
     @Override
@@ -61,6 +62,11 @@ public class RouletteRepositoryImp implements RouletteRepository {
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
+    }
+
+    @Override
+    public List<Roulette> findAll() {
+        return jdbcTemplate.query("SELECT * FROM roulette", rouletteRowMapper);
     }
 
 }
