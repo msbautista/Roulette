@@ -114,3 +114,28 @@ Resultado:
 	-  **result:** WINNER si la apuesta fue ganadora y LOSER si la apuesta fue perdida
 	-  **betType:** El tipo de apuesta que se realizó
 - **error:** Mensaje de error si este ocurre
+
+### Obtener todas las ruletas [GET] `/roulette/all`
+**Donde 1 es el id de la ruleta a cerrar**
+
+Endpoint de listado de ruletas creadas con sus estados (abierta o cerrada)
+Resultado:
+```json
+{
+    "status": "OK",
+    "data": [
+        {
+            "id": 1,
+            "state": "CLOSED",
+            "randomNumber": 1
+        }
+    ],
+    "error": null
+}
+```
+- **status:** Resultado de la operación
+- **data:** Lista de todas las ruletas
+	-  **id**: Id de la ruleta
+	-  **state:** Estado de la ruleta | CREATED: la ruleta fue creada - OPEN: la ruleta está abierta - CLOSED: la ruleta esta cerrada 
+	-  **randomNumber:** si la ruleta esta cerrada, este campo tiene el número aleatorio que lanzo la ruleta
+- **error:** Mensaje de error si este ocurre
