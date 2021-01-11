@@ -15,9 +15,7 @@ Requisitos para ejecutar la aplicacion
 1. Clonar proyecto
 
 2. Para ejecutar la aplicacion puede importar en intellij IDEA u otro.
-Tambien puede ubicarse en la raiz del proyecto y ejecutar el siguiente comando:
-
-` java -jar target/Roulette-0.0.1-SNAPSHOT.jar`
+Tambien puede ubicarse en la raiz del proyecto y ejecutar el siguiente comando: `java -jar target/Roulette-0.0.1-SNAPSHOT.jar`
 
 La aplicación se ejecutara en el **PUERTO 8080**
 
