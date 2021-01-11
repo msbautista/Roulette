@@ -6,6 +6,7 @@ import com.masivian.roulette.exception.RouletteException;
 import com.masivian.roulette.repository.BetRepository;
 import com.masivian.roulette.entity.RouletteState;
 import com.masivian.roulette.repository.RouletteRepository;
+import com.masivian.roulette.response.RouletteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,19 @@ public class RouletteService {
         roulette.setState(RouletteState.CREATED.name());
 
         return rouletteRepository.saveAndGetId(roulette);
+    }
+
+    public List<RouletteResponse> getAllRoulettes(){
+        List<Roulette> all = rouletteRepository.findAll();
+        List<RouletteResponse> responseList = new ArrayList<>();
+        for (Roulette roulette: all) {
+            RouletteResponse rouletteResponse = new RouletteResponse();
+            rouletteResponse.setId(roulette.getId());
+            rouletteResponse.setState(roulette.getState());
+            rouletteResponse.setRandomNumber(roulette.getRandomNumber());
+            responseList.add(rouletteResponse);
+        }
+        return responseList;
     }
 
     public Integer openRoulette(Integer id) throws RouletteException.RouletteDoesNotExist {

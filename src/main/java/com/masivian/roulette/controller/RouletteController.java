@@ -3,6 +3,7 @@ package com.masivian.roulette.controller;
 import com.masivian.roulette.response.ApiResponse;
 import com.masivian.roulette.response.BetResponse;
 import com.masivian.roulette.exception.RouletteException;
+import com.masivian.roulette.response.RouletteResponse;
 import com.masivian.roulette.service.RouletteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,6 +67,13 @@ public class RouletteController {
 
             return new ApiResponse().send(HttpStatus.BAD_REQUEST, ex.getMessage());
         }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Object> getAllRoulettes(){
+        List<RouletteResponse> allRoulettes = rouletteService.getAllRoulettes();
+
+        return new ApiResponse(allRoulettes).send(HttpStatus.OK, null);
     }
 
 
