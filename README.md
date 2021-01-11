@@ -22,12 +22,11 @@ No olvide actualizar los properties de la aplicación con los cambios para conec
 
 1. Clonar proyecto
 
-2. Para ejecutar la aplicacion puede importar en intellij IDEA u otro.
-Tambien puede ubicarse en la raiz del proyecto y ejecutar el siguiente comando: `java -jar target/Roulette-0.0.1-SNAPSHOT.jar`
+2. Importar proyecto en Intellij IDEA u otro y ejecutar la aplicacion.
+Tambien puede generar el package del proyecto.
+Recuerde la información previamente descrita en cuanto a la base de datos (Ver IMPORTANTE)
 
 La aplicación se ejecutara en el **PUERTO 8080**
-
-![](https://i.ibb.co/ZBRZH65/Captura2.png)
 
 ## API
 
