@@ -116,7 +116,6 @@ Resultado:
 - **error:** Mensaje de error si este ocurre
 
 ### Obtener todas las ruletas [GET] `/roulette/all`
-**Donde 1 es el id de la ruleta a cerrar**
 
 Endpoint de listado de ruletas creadas con sus estados (abierta o cerrada)
 Resultado:
