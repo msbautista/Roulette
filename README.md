@@ -1,6 +1,11 @@
-Para crear una nueva ruleta.
+# Prueba Clean Code - Juego de Ruleta
+
+Esta aplicación es un API que representa una ruleta de apuestas.
 
 ### Crear una ruleta [GET] `/roulette/new`
+
+Endpoint que crea una ruleta para empezar a jugar.
+
 Resultado:
 ```json
 {
