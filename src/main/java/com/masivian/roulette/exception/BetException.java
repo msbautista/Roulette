@@ -10,7 +10,7 @@ public class BetException {
 
     public static class InvalidMoney extends RejectException {
         public InvalidMoney() {
-            super("The bet money must be between $0 and $10.000");
+            super("The bet money must be between $1 and $10.000");
         }
     }
 

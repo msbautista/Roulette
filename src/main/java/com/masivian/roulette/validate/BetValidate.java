@@ -17,7 +17,7 @@ public class BetValidate {
     private final int MAX_BET_VALUE = 36;
     private final int MIN_BET_VALUE = 0;
     private final int MAX_BET_MONEY = 10000;
-    private final int MIN_BET_MONEY = 0;
+    private final int MIN_BET_MONEY = 1;
     private final int MONEY_IS_LESS_THAN_VALUE_PASSED = -1;
     private final int MONEY_IS_GREATER_THAN_VALUE_PASSED = 1;
 
