@@ -47,6 +47,7 @@ public class RouletteService {
             rouletteResponse.setRandomNumber(roulette.getRandomNumber());
             responseList.add(rouletteResponse);
         }
+
         return responseList;
     }
 
