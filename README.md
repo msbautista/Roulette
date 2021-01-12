@@ -9,6 +9,7 @@ Esta aplicación es un API que representa una ruleta de apuestas.
 - [Requisitos para ejecutar la aplicación](#requisitos-para-ejecutar-la-aplicación).
 - [IMPORTANTE](#importante).
 - [Ejecutar aplicación](#ejecutar-aplicación).
+- [Dockerización](#Dockerización)
 - [API](#api).
 
 ### Requisitos para ejecutar la aplicación
@@ -34,6 +35,23 @@ Tambien puede generar el package del proyecto.
 Recuerde la información previamente descrita en cuanto a la base de datos (Ver IMPORTANTE)
 
 La aplicación se ejecutara en el **PUERTO 8080**
+
+# Dockerización
+
+#### Crear imagen de docker
+
+Para crear una imagen de docker de la aplicacion, ejecute el siguiente comando de maven en la raiz del proyecto: 
+*Si no tiene maven configurado en el equipo puede usar la terminal de Intellij*
+
+`mvn package docker:build`
+
+![](https://i.ibb.co/3RGyHRk/Captura3.png)
+
+####  Crear contenedor de la aplicación
+
+`docker run -d --name roulette-api -e MYSQL_HOST=192.168.99.100 -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=my-secret-pw -p 8080:8080 stivenreyes/roulette:latest`
+
+Donde MYSQL_HOST, MYSQL_USERNAME y MYSQL_PASSWORD son parametros con configuraciones de la base de datos.
 
 ## API
 
