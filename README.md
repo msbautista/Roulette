@@ -2,6 +2,59 @@
 
 Esta aplicación es un API que representa una ruleta de apuestas.
 
+**Proyecto hecho en Java 8 y Spring Boot**
+
+## Tabla de contenido
+
+- [Requisitos para ejecutar la aplicación](#requisitos-para-ejecutar-la-aplicación).
+- [IMPORTANTE](#importante).
+- [Ejecutar aplicación](#ejecutar-aplicación).
+- [Dockerización](#Dockerización)
+- [API](#api).
+
+### Requisitos para ejecutar la aplicación
+
+- [Java 1.8 JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html "Java 1.8 JDK")
+- [IntelliJ IDEA](https://www.jetbrains.com/es-es/idea/ "IntelliJ IDEA") o Spring Tools Suite 4
+- [Postman](https://www.postman.com/ "Postman") Para ejecutar pruebas al API
+
+### IMPORTANTE
+
+Tener una base de datos mysql en la cual pueda crear las tablas para el proyecto.
+El script sql se encuentra en la siguiente ruta: `src/main/resources/database.sql`
+Después de crear la base de datos, se crea primero la tabla de roulette y luego la tabla de bet.
+
+No olvide actualizar los properties de la aplicación con los cambios para conectar correctamente a la base de datos (`src/main/resources/application.properties`)
+
+## Ejecutar aplicación
+
+1. Clonar proyecto
+
+2. Importar proyecto en Intellij IDEA u otro y ejecutar la aplicacion.
+Tambien puede generar el package del proyecto.
+Recuerde la información previamente descrita en cuanto a la base de datos (Ver IMPORTANTE)
+
+La aplicación se ejecutara en el **PUERTO 8080**
+
+# Dockerización
+
+#### Crear imagen de docker
+
+Para crear una imagen de docker de la aplicacion, ejecute el siguiente comando de maven en la raiz del proyecto: 
+*Si no tiene maven configurado en el equipo puede usar la terminal de Intellij*
+
+`mvn package docker:build`
+
+![](https://i.ibb.co/3RGyHRk/Captura3.png)
+
+####  Crear contenedor de la aplicación
+
+`docker run -d --name roulette-api -e MYSQL_HOST=192.168.99.100 -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=my-secret-pw -p 8080:8080 stivenreyes/roulette:latest`
+
+Donde MYSQL_HOST, MYSQL_USERNAME y MYSQL_PASSWORD son parametros con configuraciones de la base de datos.
+
+## API
+
 ### Crear una ruleta [GET] `/roulette/new`
 
 Endpoint que crea una ruleta para empezar a jugar.
